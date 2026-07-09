@@ -1,6 +1,7 @@
 #include <iostream>
 #include <array>
 #include <string>
+#include <vector>
 
 const int ArSize = 101;
 
@@ -98,7 +99,7 @@ void car_collection()
     for (int i = 0; i < size; i++)
     {
         cout << "Car #" << (i+1) << "\nEnter manufacturer: ";
-        cin.get(); //Разобраться почему здесь нужен get
+        cin.get(); 
         getline(cin, collection[i].manufacturer);
         cout << "Enter year of manufacture: ";
         cin >> collection[i].year;
@@ -110,8 +111,40 @@ void car_collection()
 
 }
 
+void words()
+{
+    vector<string> words;
+    string word;
+
+    cout << "Enter words (to complete the enput enter done):" << endl;
+    cin >> word;
+
+    while (word != "done")
+    {
+        words.push_back(word);
+        cin >> word;
+    }
+
+    cout << "You entered " << words.size() << " words" << endl;
+}
+
+void piramida()
+{
+    int cnt;
+    cout << "Enter count of string: ";
+    cin >> cnt;
+    cnt -= 1;
+
+    for (int i = 0; i < (cnt+1); i++)
+    {
+        for (int j = 0; j < (cnt-i); j++) cout << ". ";
+        for (int j = 0; j < (i+1); j++) cout << "* ";
+        cout << endl;
+    }
+}
+
 int main()
 {
-    car_collection();
+    piramida();
     return 0;
 }
