@@ -1,0 +1,6 @@
+Enter words (q to quit) : 
+The 12 awesome oxen ambled
+quitely across 15 meters of lawn. q
+4 words beginning with vowels
+5 words beginning with consonants
+2 others

@@ -145,6 +145,7 @@ void piramida()
 
 int main()
 {
-    piramida();
+    bankir();
+    
     return 0;
 }
