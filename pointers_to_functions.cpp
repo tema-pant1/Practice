@@ -1,6 +1,3 @@
-#include <iostream>
-
-
 struct applicant
 {
     char name[30];
