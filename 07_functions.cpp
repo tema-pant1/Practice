@@ -3,6 +3,7 @@
 #include <array>
 #include <cstdlib>
 
+
 typedef long long lg;
 
 using namespace std;
@@ -193,8 +194,116 @@ void my_array()
     show_array(array, size);
 }
 
+const int SLEN = 30;
+struct student 
+{
+    char fullname[SLEN];
+    char hobby[SLEN];
+    int ooplevel;
+};
+
+int getinfo(student array[], int size)
+{
+    cout << "Enter information about students.\n1 - fullname\n2 - hobby\n3 - ooplevel\n";
+    student current;
+    int cur_size(0);
+    for (int i = 0; i < size; i++)
+    {
+        cout << "Student #" << (i+1) <<"\n1: ";
+        cin.getline(current.fullname, SLEN);
+        if (current.fullname[0] == '\0') break;
+        cout << "2: ";
+        cin.getline(current.hobby, SLEN);
+        cout << "3: ";
+        cin >> current.ooplevel; 
+        array[i] = current;
+        while (cin.get() != '\n') continue;
+        cur_size++;
+    }
+    cout << "Reading successful.\n";
+    return cur_size;
+}
+
+void display1(student st)
+{
+    cout << "Student: " << st.fullname << endl;
+    cout << "Hobby: " << st.hobby << endl;
+    cout << "Ooplevel: " << st.ooplevel << endl;
+}
+
+void display2(const student* ps)
+{
+    cout << "Student: " << ps->fullname << endl;
+    cout << "Hobby: " << ps->hobby << endl;
+    cout << "Ooplevel: " << ps->ooplevel << endl;
+}
+
+void display3(const student array[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        cout << "#" << (i+1) << endl;
+        cout << "Student: " << array[i].fullname << endl;
+        cout << "Hobby: " << array[i].hobby << endl;
+        cout << "Ooplevel: " << array[i].ooplevel << endl;
+    }
+}
+
+
+void student_func()
+{
+    cout << "Enter class size: ";
+    int class_size;
+    cin >> class_size;
+    while (cin.get() != '\n') continue;
+    student* ptr_stu = new student[class_size];
+    int entered = getinfo(ptr_stu, class_size);
+    for (int i = 0; i < entered; i++)
+    {
+        display1(ptr_stu[i]);
+        display2(&ptr_stu[i]);
+    }
+    display3(ptr_stu, entered);
+    delete [] ptr_stu;
+    cout << "Done.\n";
+}
+
+double add(double x, double y)
+{
+    return x+y;
+}
+
+double mult(double x, double y)
+{
+    return x*y;
+}
+
+double subtraction(double x, double y)
+{
+    return x-y;
+}
+
+double calculate(double x, double y, double (*op)(double, double))
+{
+    return op(x, y);
+}
+
+void calculator()
+{
+    double (*operations[3])(double, double) = {add, mult, subtraction};
+    cout << "Enter 2 numbers (to stop enter q):\n";
+    double x,y;
+
+    while (cin >> x >> y)
+    {
+        for (int i = 0; i < 3; i++) cout << calculate(x, y, operations[i]) << endl;
+    }
+
+    cout << "Bye!\n";
+}
+
 int main()
 {
-    my_array();
+    calculator();
     return 0;
 }
