@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include <new>
 
 using namespace std;
 
@@ -14,15 +16,33 @@ void TestCounter()
     for (int i = 0; i < 5; i++) Counter();
 }
 
-namespace std
+void strcount(const string& str)
 {
-    void zhopa(int);
+    static int total = 0;
+    int cnt = 0;
+    cout << str << " contains ";
+    cnt = str.size();
+    total += cnt;
+    cout << cnt << " characters\n";
+    cout << total << " charactes total\n";
+}
+
+void cnt_str()
+{
+    string input;
+    cout << "Enter a line:\n";
+    while(getline(cin, input))
+    {
+        if (input.empty()) break;
+        strcount(input);
+        cout << "Enter next line (empty line to quit):\n";
+    }
+    cout << "Bye!\n";
+
 }
 
 int main()
 {
-    int a = 3;
-    std::zhopa(a);
-    TestCounter();
+    partition_new();
     return 0;
 }
