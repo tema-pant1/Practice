@@ -14,8 +14,15 @@ void TestCounter()
     for (int i = 0; i < 5; i++) Counter();
 }
 
+namespace std
+{
+    void zhopa(int);
+}
+
 int main()
 {
+    int a = 3;
+    std::zhopa(a);
     TestCounter();
     return 0;
 }
