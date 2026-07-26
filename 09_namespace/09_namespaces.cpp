@@ -43,6 +43,5 @@ void cnt_str()
 
 int main()
 {
-    partition_new();
     return 0;
 }

@@ -16,11 +16,7 @@ namespace SALES
         }
         average /= QUARTERS;
         for (int i = (QUARTERS-n); i > 0; i--)
-        {    
             s.sales[QUARTERS-i] = 0;
-        }
-        if (0 > max) max = 0;
-        if (0 < min) min = 0;
         s.average = average;
         s.min = min;
         s.max = max;
