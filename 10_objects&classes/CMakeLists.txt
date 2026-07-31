@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10.0)
 project(10_objects&classes VERSION 0.1.0 LANGUAGES C CXX)
 
-add_executable(10_objects Plorg.cpp Test_Plorg.cpp)
+add_executable(10_objects List.cpp Test_List.cpp)
 
