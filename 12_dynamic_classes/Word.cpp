@@ -1,5 +1,6 @@
 #include <cstring>
-#include<limits>
+#include <limits>
+#include <cctype>
 #include "Word.h"
 
 int word::count = 0;
@@ -51,10 +52,11 @@ const word& longer(const word& w1, const word& w2)
 
 word concat(const word& w1, const word& w2)
 {
-    char* temp = new char[w1.len + w2.len];
-    std::strcat(temp, w1.str);
+    char* temp = new char[w1.len + w2.len + 1];
+    std::strcpy(temp, w1.str);
     std::strcat(temp, w2.str);
     word result(temp);
+    delete [] temp;
     return result;
 }
 
@@ -72,6 +74,33 @@ word& word::operator=(const word& obj)
 char& word::operator[](int i)
 {
     return str[i];
+}
+
+void word::wordlow()
+{
+    for (int i = 0; str[i] != '\0'; i++)
+    {
+        if (std::isalpha(str[i]) && std::isupper(str[i]))
+            str[i] = std::tolower(str[i]);
+    }
+}
+
+void word::wordup()
+{
+    for (int i = 0; str[i] != '\0'; i++)
+    {
+        if (std::isalpha(str[i]) && std::islower(str[i]))
+            str[i] = std::toupper(str[i]);  
+    }  
+}
+
+int word::find(char ch)
+{
+    int cnt = 0;
+    for (int i = 0; str[i] != '\0'; i++)
+        if (str[i] == ch)
+            cnt++;
+    return cnt;
 }
 
 const char& word::operator[](int i) const
@@ -93,6 +122,17 @@ bool operator==(const word& wrd1, const word& wrd2)
 {
     return (std::strcmp(wrd1.str, wrd2.str) == 0);
 }
+
+word operator+(const word& w1, const word& w2)
+{
+    char* temp = new char[w1.len + w2.len + 1];
+    std::strcpy(temp, w1.str);
+    std::strcat(temp, w2.str);
+    word result(temp);
+    delete [] temp;
+    return result; 
+}
+
 
 std::ostream& operator<<(std::ostream& os, const word& obj)
 {
