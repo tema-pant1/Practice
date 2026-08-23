@@ -14,3 +14,6 @@ int main()
     item* pi = &di1;
     return 0;
 }
+
+
+
