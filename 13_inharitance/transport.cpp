@@ -9,8 +9,16 @@ vehicle::vehicle(double f, double sp)
 
 void vehicle::show() const
 {
+    formating format = SetFormat();
     std::cout << "Fuel: " << fuel << '\n';
     std::cout << "Speed: " << speed << '\n';
+    restore(format);
+}
+
+void SportsCar::show() const
+{
+    vehicle::show();
+    std::cout << "Type: Sports Car\n";
 }
 
 void SportsCar::boost()
@@ -24,4 +32,17 @@ void SportsCar::boost()
         std::cout << "Not enougth fuel. Boost canceled.\n";
 }
 
-formatting 
+vehicle::formating vehicle::SetFormat(std::ostream& os) const
+{
+    formating format;
+    format.flags = os.setf(std::ios_base::fixed, std::ios_base::floatfield);
+    format.prec = os.precision(2);
+    return format;
+}
+
+void vehicle::restore(formating& f, std::ostream& os) const
+{
+    os.setf(f.flags, std::ios_base::floatfield);
+    os.precision(f.prec);
+}
+

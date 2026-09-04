@@ -8,7 +8,7 @@ protected:
     struct formating {
         std::ios_base::fmtflags flags;
         std::streamsize prec;
-    };
+    };      
     formating SetFormat(std::ostream& os = std::cout) const;
     void restore(formating& f, std::ostream& os = std::cout) const;
     
