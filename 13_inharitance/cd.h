@@ -1,8 +1,9 @@
+#pragma once
 
 class cd {
 private:
-    char performers[50];
-    char label[20];
+    char* performers;
+    char* label;
     int selections;
     double playtime;
 
@@ -14,3 +15,4 @@ public:
     virtual ~cd();
     virtual void report() const;
 };
+
